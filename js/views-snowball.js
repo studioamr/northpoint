@@ -42,7 +42,7 @@ window.Views = window.Views || {};
       <div class="muted small mt12">Base: tu payout promedio (${UI.usd(base)}). Edita los % para ajustarlo a tu realidad.</div>
     </div>`;
 
-    return `<div class="page">${hero}${reparto}${growthPlan(perMonth, allocs)}${goalCalc(perMonth, allocs)}${portfolio()}<div class="spacer"></div></div>`;
+    return `<div class="page">${hero}${reparto}${growthPlan(perMonth, allocs)}${portfolio()}<div class="spacer"></div></div>`;
   };
 
   // -------- calculadora de meta: pon un monto → cuánto/mes y en cuánto tiempo --------
