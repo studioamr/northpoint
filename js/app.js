@@ -119,6 +119,49 @@ const App = (() => {
     startDemo() { db = Store.empty(); Data.seed(db); save(); UI.closeSheet(); state.period = UI.todayKey(); go('inicio'); UI.toast('Demo cargado · edítalo a tu gusto'); },
     logout: () => UI.modal(`<div class="h3 mb8">¿Cerrar sesión?</div><p class="muted small mb16">Tus datos se quedan guardados en este dispositivo.</p><div class="btn-row"><button class="btn btn-ghost" data-act="closeSheet">Cancelar</button><button class="btn btn-primary" data-act="doLogout">Cerrar sesión</button></div>`),
     doLogout() { UI.closeSheet(); go('landing'); },
+
+    /* ---- Tradovate · sync en vivo ---- */
+    connectTradovate: () => UI.sheet(`
+      <div class="sheet-head"><div class="h2">${UI.icon('plug', '', 18)} Conectar Tradovate</div>
+        <div class="muted small">Sync en vivo de tus trades reales de Tradeify.</div></div>
+      <div class="form">
+        ${Forms.field('URL del backend', Forms.input('sync-url', db.sync?.backendUrl || '', 'https://tu-backend.onrender.com'), 'El servidor northpoint-sync corriendo')}
+        ${Forms.field('Usuario de Tradovate', Forms.input('sync-user', '', 'tu usuario'))}
+        ${Forms.field('Contraseña', `<input class="input" id="sync-pass" type="password" autocomplete="off" />`)}
+        <button class="btn btn-primary full" data-act="doConnectTradovate">Conectar y sincronizar</button>
+      </div>
+      ${db.sync?.session ? `<div class="setlist mt12">
+        <button class="setrow2" data-act="syncTradovate">${UI.icon('sync', '', 18)} <span>Sincronizar ahora</span></button>
+        <button class="setrow2 danger" data-act="disconnectTradovate">${UI.icon('x', '', 18)} <span>Desconectar</span></button></div>` : ''}
+      <p class="muted small mt12">Tu contraseña solo viaja a TU backend → Tradovate (HTTPS). Necesitas el servidor <b>northpoint-sync</b> corriendo (ver su README).</p>`),
+    async doConnectTradovate() {
+      const url = val('sync-url').replace(/\/+$/, '');
+      const name = val('sync-user'); const pass = document.getElementById('sync-pass')?.value;
+      if (!url || !name || !pass) return UI.toast('Faltan datos');
+      UI.toast('Conectando…');
+      try {
+        const r = await fetch(url + '/api/connect', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name, password: pass }) });
+        const d = await r.json(); if (!r.ok) throw new Error(d.error || ('HTTP ' + r.status));
+        db.sync = { backendUrl: url, session: d.session, lastSync: '' }; save();
+        await A.syncTradovate();
+      } catch (e) { UI.toast('No conectó: ' + e.message); }
+    },
+    async syncTradovate() {
+      if (!db.sync?.backendUrl || !db.sync?.session) return UI.toast('Conecta Tradovate primero');
+      UI.toast('Sincronizando…');
+      try {
+        const r = await fetch(db.sync.backendUrl + '/api/trades?session=' + encodeURIComponent(db.sync.session));
+        const d = await r.json(); if (!r.ok) throw new Error(d.error || ('HTTP ' + r.status));
+        let acc = db.accounts.find(a => a.alias === 'Tradovate (sync)');
+        if (!acc) { acc = { id: Store.uid(), firm: 'tradeify', alias: 'Tradovate (sync)', size: 50000, phase: 'funded', status: 'activa', createdAt: UI.todayISO() }; db.accounts.push(acc); }
+        const have = new Set(db.trades.map(t => t.extId).filter(Boolean));
+        let added = 0;
+        (d.trades || []).forEach(t => { if (t.extId && have.has(t.extId)) return; db.trades.push({ id: Store.uid(), accountId: acc.id, ...t }); added++; });
+        db.sync.lastSync = new Date().toISOString(); save(); UI.closeSheet(); render();
+        UI.toast(added ? `${added} trade(s) sincronizados` : 'Ya estás al día');
+      } catch (e) { UI.toast('Sync falló: ' + e.message); }
+    },
+    disconnectTradovate() { db.sync = null; save(); UI.closeSheet(); UI.toast('Tradovate desconectado'); render(); },
     go: el => go(el.dataset.route),
     seeLanding: () => go('landing'),
     openDiscord: () => { try { window.open('https://discord.gg/', '_blank', 'noopener'); } catch (e) {} },

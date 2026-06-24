@@ -39,6 +39,7 @@ window.Views = window.Views || {};
     return `<div class="sheet-head"><div class="h2">Ajustes</div></div>
       <div class="form">${Forms.field('Tu nombre', Forms.input('set-name', d.meta.name, 'André'))}<button class="btn btn-ghost full" data-act="saveName">Guardar nombre</button></div>
       <div class="setlist">
+        <button class="setrow2" data-act="connectTradovate">${UI.icon('plug', '', 18)} <span>Conectar Tradovate (sync en vivo)${d.sync?.session ? ' · conectado' : ''}</span></button>
         <button class="setrow2" data-act="exportCSV">${UI.icon('download', '', 18)} <span>Exportar trades a Excel (.csv)</span></button>
         <button class="setrow2" data-act="exportData">${UI.icon('share', '', 18)} <span>Respaldar mis datos (.json)</span></button>
         <button class="setrow2" data-act="seeLanding">${UI.icon('gift', '', 18)} <span>Ver página del curso</span></button>

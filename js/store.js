@@ -14,6 +14,7 @@ const Store = (() => {
     checks: {},     // { 'YYYY-MM-DD': [idsDeChecklistCumplidos] }
     progress: {},   // { lessonId: true } — lecciones del curso completadas
     money: null,    // Snowball · money management (se siembra de Data.MONEY)
+    sync: null,     // conexión Tradovate { backendUrl, session, lastSync }
   });
 
   function load() {
