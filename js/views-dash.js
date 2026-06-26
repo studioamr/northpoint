@@ -31,7 +31,7 @@ window.Views = window.Views || {};
       const ac = Q.accById(t.accountId) || {};
       return `<tr data-act="editTrade" data-id="${t.id}">
         <td><div class="td-date">${UI.dateUS(t.date)}</div><div class="td-sub muted">${t12(t.time)}</div></td>
-        <td><b>${UI.esc(t.instrument || 'MNQ')}</b></td>
+        <td><b>${UI.esc(t.instrument || 'MNQ')}</b>${t.media && t.media.length ? ` <span class="td-clip" title="${t.media.length} adjunto(s)">${UI.icon('image', '', 12)}</span>` : ''}</td>
         <td class="td-acc muted">${UI.esc(ac.alias || '—')}</td>
         <td>${sideTag(t.side)}</td>
         <td>${t.contracts || 0}</td>

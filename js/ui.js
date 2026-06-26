@@ -56,6 +56,8 @@ const UI = (() => {
     snow: '<path d="M12 2v20M5 5.5l14 13M19 5.5l-14 13M12 5l2.4 1.4M12 5 9.6 6.4M12 19l2.4-1.4M12 19l-2.4-1.4M4.3 8.2l2.7.1M4.3 8.2l.1 2.7M19.7 15.8l-2.7-.1M19.7 15.8l-.1-2.7M19.7 8.2l-2.7.1M19.7 8.2l-.1 2.7M4.3 15.8l2.7-.1M4.3 15.8l.1-2.7"/>',
     pie: '<path d="M12 3a9 9 0 1 0 9 9h-9V3Z"/><path d="M14 3.5A9 9 0 0 1 20.5 10H14Z"/>',
     plug: '<path d="M9 2v6M15 2v6M7 8h10v3a5 5 0 0 1-10 0V8ZM12 16v6"/>',
+    image: '<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9" r="1.6"/><path d="m4 18 5-5 3.5 3 3-3 5 5"/>',
+    video: '<rect x="3" y="6" width="13" height="12" rx="2"/><path d="m16 10 5-3v10l-5-3Z"/>',
   };
   function icon(name, cls, size) {
     const p = ICONS[name] || ICONS.list; const s = size || 18;
@@ -202,11 +204,13 @@ const UI = (() => {
     const root = document.getElementById('sheet-root');
     root.innerHTML = `<div class="sheet-bg" data-act="closeBg"><div class="sheet ${big ? 'big' : ''}"><div class="grab"></div>${html}</div></div>`;
     requestAnimationFrame(() => root.querySelector('.sheet-bg')?.classList.add('in'));
+    if (typeof Media !== 'undefined') Media.hydrate(root);
   }
   function modal(html) {
     const root = document.getElementById('sheet-root');
     root.innerHTML = `<div class="modal-bg" data-act="closeBg"><div class="modal">${html}</div></div>`;
     requestAnimationFrame(() => root.querySelector('.modal-bg')?.classList.add('in'));
+    if (typeof Media !== 'undefined') Media.hydrate(root);
   }
   function closeSheet() { document.getElementById('sheet-root').innerHTML = ''; }
   function empty(ic, title, sub) { return `<div class="empty"><div class="empty-ic">${icon(ic, '', 26)}</div><div class="empty-t">${title}</div>${sub ? `<div class="empty-s">${sub}</div>` : ''}</div>`; }

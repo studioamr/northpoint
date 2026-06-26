@@ -33,6 +33,28 @@ const Forms = (() => {
     return a.length ? a : [{ v: '', label: 'Sin cuentas todavía' }];
   };
 
+  // ---- adjuntos: fotos / videos ----
+  function mediaStrip() {
+    const list = (typeof App !== 'undefined' && App.pendingMedia) || [];
+    return list.map(m => {
+      let inner;
+      if (m.isNew) {
+        if (!m.url) m.url = URL.createObjectURL(m.blob);
+        inner = m.type === 'video' ? `<video src="${m.url}" muted playsinline></video>` : `<img src="${m.url}" alt="" />`;
+      } else {
+        inner = m.type === 'video' ? `<video data-media="${m.id}" muted playsinline></video>` : `<img data-media="${m.id}" alt="" />`;
+      }
+      return `<div class="media-item" data-act="openMedia" data-key="${m.k}">${inner}${m.type === 'video' ? `<span class="media-play">${UI.icon('play', '', 16)}</span>` : ''}<button class="media-del" data-act="removeMedia" data-key="${m.k}" aria-label="Quitar">${UI.icon('x', '', 12)}</button></div>`;
+    }).join('');
+  }
+  function mediaField(label) {
+    return `<div class="field"><span class="f-lbl">${label || 'Fotos / videos del setup'}</span>
+      <div class="media-strip" id="media-strip">${mediaStrip()}</div>
+      <label class="media-add">${UI.icon('plus', '', 16)} Agregar foto o video
+        <input type="file" accept="image/*,video/*" multiple data-change="attachMedia" hidden />
+      </label></div>`;
+  }
+
   // ---- TRADE ----
   function trade(t) {
     t = t || {};
@@ -60,6 +82,7 @@ const Forms = (() => {
         ${field('Setup', pick('setup', setups, t.setup || 'orb'))}
         ${field('¿Cómo operé?', pick('emotion', emo, t.emotion || 'disciplina'))}
         ${field('Notas', area('t-notes', t.notes, '¿Qué viste? ¿Seguiste el plan?'))}
+        ${mediaField('Screenshot del setup (fotos / videos)')}
       </div>` + actions('saveTrade', t.id, t.id ? 'Guardar' : 'Agregar trade') + delRow('delTrade', t.id);
   }
 
@@ -123,6 +146,7 @@ const Forms = (() => {
         ${field('Fecha', dateField('n-date', n.date))}
         ${field('Etiqueta', pick('ntag', tags, n.tag || 'nota'))}
         ${field('¿Qué pasó hoy?', area('n-text', n.text, 'Disciplina, emociones, qué mejorar...'))}
+        ${mediaField('Fotos / videos')}
       </div>` + actions('saveNote', n.id, n.id ? 'Guardar' : 'Guardar nota') + delRow('delNote', n.id);
   }
 
@@ -141,5 +165,5 @@ const Forms = (() => {
       </div>` + actions('saveExpense', e.id, e.id ? 'Guardar' : 'Agregar gasto') + delRow('delExpense', e.id);
   }
 
-  return { trade, account, payout, goal, note, expense, pick, field, input, numField, head };
+  return { trade, account, payout, goal, note, expense, pick, field, input, numField, head, mediaField, mediaStrip };
 })();

@@ -1,9 +1,9 @@
 /* RACHA · service worker — cache-first del shell para que abra sin internet */
-const CACHE = 'racha-v28';
+const CACHE = 'racha-v30';
 const ASSETS = [
   './', './index.html',
   './css/styles.css',
-  './js/store.js', './js/data.js', './js/ui.js', './js/q.js', './js/forms.js',
+  './js/store.js', './js/data.js', './js/ui.js', './js/media.js', './js/q.js', './js/forms.js',
   './js/views-landing.js', './js/views-academia.js', './js/views-dash.js', './js/views-inicio.js', './js/views-snowball.js', './js/views-plan.js',
   './js/app.js',
   './icon.svg', './manifest.json',

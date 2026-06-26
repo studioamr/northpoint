@@ -1198,3 +1198,24 @@ html[data-theme="dark"] .lp .lp-card, html[data-theme="dark"] .lp .lp-mod, html[
 .rm-final .rm-dot { width: 20px; height: 20px; background: #f1c453; box-shadow: 0 0 0 5px rgba(241,196,83,.18); }
 .rm-final .rm-amt { font-size: 1.4rem; color: #f1c453; }
 .rm-final .rm-time { color: #f1c453; }
+
+/* Adjuntos: fotos / videos */
+.media-strip { display: flex; flex-wrap: wrap; gap: 8px; }
+.media-strip:not(:empty) { margin-bottom: 9px; }
+.media-item { position: relative; width: 76px; height: 76px; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); background: #0d1622; padding: 0; cursor: pointer; flex: none; }
+.media-item.sm { width: 56px; height: 56px; border-radius: 9px; }
+.media-item img, .media-item video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.media-del { position: absolute; top: 3px; right: 3px; width: 20px; height: 20px; border-radius: 50%; background: rgba(0,0,0,.62); color: #fff; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; }
+.media-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #fff; background: rgba(0,0,0,.22); pointer-events: none; }
+.media-add { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; font-size: .86rem; font-weight: 600; color: var(--cyan); border: 1px dashed rgba(95,208,255,.42); border-radius: 10px; padding: 9px 13px; }
+.media-add:hover { background: rgba(95,208,255,.07); }
+.note-wrap { display: flex; flex-direction: column; }
+.note-media { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 0 12px 42px; }
+.td-clip { color: var(--cyan); vertical-align: middle; opacity: .85; }
+.lightbox { display: flex; align-items: center; justify-content: center; }
+.lightbox img, .lightbox video { max-width: 78vw; max-height: 78vh; border-radius: 12px; display: block; }
+
+/* Pantalla de bloqueo */
+.lockwrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
+.lockcard { width: 100%; max-width: 360px; background: #0d1726; border: 1px solid var(--line); border-radius: 20px; padding: 32px 26px; box-shadow: 0 30px 80px rgba(0,0,0,.5); }
+.lock-logo { display: flex; justify-content: center; margin-bottom: 14px; }

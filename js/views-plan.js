@@ -29,7 +29,7 @@ window.Views = window.Views || {};
     const notes = Q.db().journal.slice().sort((a, b) => (a.date < b.date ? 1 : -1));
     const tagColor = { win: 'var(--up)', leccion: 'var(--gold)', error: 'var(--down)', nota: 'var(--muted)' };
     const bitacora = `<div class="card"><div class="card-head"><div class="ch-t">${UI.icon('book', '', 18)} Bitácora</div><button class="link" data-act="addNote">+ Nota</button></div>
-      ${notes.length ? notes.map(n => `<button class="noterow" data-act="editNote" data-id="${n.id}"><span class="nt-tag" style="background:${tagColor[n.tag] || 'var(--muted)'}22;color:${tagColor[n.tag] || 'var(--muted)'}">${n.tag || 'nota'}</span><div class="nt-main"><div class="muted small">${UI.date(n.date)}</div><div class="nt-text">${UI.esc(n.text)}</div></div></button>`).join('') : UI.empty('book', 'Bitácora vacía', 'Anota tus lecciones.')}</div>`;
+      ${notes.length ? notes.map(n => `<div class="note-wrap"><button class="noterow" data-act="editNote" data-id="${n.id}"><span class="nt-tag" style="background:${tagColor[n.tag] || 'var(--muted)'}22;color:${tagColor[n.tag] || 'var(--muted)'}">${n.tag || 'nota'}</span><div class="nt-main"><div class="muted small">${UI.date(n.date)}</div><div class="nt-text">${UI.esc(n.text)}</div></div></button>${n.media && n.media.length ? `<div class="note-media">${n.media.map(mm => `<button class="media-item sm" data-act="viewMedia" data-id="${mm.id}" data-type="${mm.type}">${mm.type === 'video' ? `<video data-media="${mm.id}" muted playsinline></video><span class="media-play">${UI.icon('play', '', 14)}</span>` : `<img data-media="${mm.id}" alt="" />`}</button>`).join('')}</div>` : ''}</div>`).join('') : UI.empty('book', 'Bitácora vacía', 'Anota tus lecciones.')}</div>`;
 
     return `<div class="page"><div class="grid2-wide">${checklist}${routine}</div><div class="grid2-wide">${fases}${reglas}</div>${pledge}${bitacora}</div>`;
   };
@@ -44,6 +44,7 @@ window.Views = window.Views || {};
         <button class="setrow2" data-act="exportData">${UI.icon('share', '', 18)} <span>Respaldar mis datos (.json)</span></button>
         <button class="setrow2" data-act="seeLanding">${UI.icon('gift', '', 18)} <span>Ver página del curso</span></button>
         <button class="setrow2" data-act="resetDemo">${UI.icon('play', '', 18)} <span>Cargar datos de ejemplo</span></button>
+        <button class="setrow2" data-act="passwordSettings">${UI.icon('lock', '', 18)} <span>Contraseña de acceso${d.meta.pass ? ' · activada' : ''}</span></button>
         <button class="setrow2" data-act="logout">${UI.icon('user', '', 18)} <span>Cerrar sesión</span></button>
         <button class="setrow2 danger" data-act="wipeAll">${UI.icon('trash', '', 18)} <span>Borrar todo y empezar de cero</span></button>
       </div>
