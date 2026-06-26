@@ -1180,3 +1180,21 @@ html[data-theme="dark"] .lp .lp-card, html[data-theme="dark"] .lp .lp-mod, html[
 .goal-current { display: flex; align-items: flex-start; gap: 8px; background: rgba(95,208,255,.08); border: 1px solid rgba(95,208,255,.25); border-radius: 12px; padding: 12px 14px; font-size: .88rem; line-height: 1.5; }
 .goal-current .ic { color: var(--cyan); flex: none; margin-top: 2px; }
 @media (max-width: 640px) { .goal-grid { grid-template-columns: 1fr 1fr; } }
+
+/* El Mapa al Millón (Snowball) */
+.rm-headline { display: flex; align-items: flex-start; gap: 8px; background: rgba(95,208,255,.08); border: 1px solid rgba(95,208,255,.25); border-radius: 12px; padding: 12px 14px; font-size: .9rem; line-height: 1.5; }
+.rm-headline .ic { color: var(--cyan); flex: none; margin-top: 2px; }
+.roadmap { display: flex; flex-direction: column; margin-top: 4px; }
+.rm-stop { display: flex; align-items: stretch; gap: 14px; }
+.rm-rail { position: relative; width: 22px; flex: none; display: flex; align-items: center; justify-content: center; }
+.rm-rail::before { content: ''; position: absolute; top: 0; bottom: 0; left: 50%; transform: translateX(-50%); width: 2px; background: rgba(95,208,255,.28); }
+.rm-stop:first-child .rm-rail::before { top: 50%; }
+.rm-stop:last-child .rm-rail::before { bottom: 50%; }
+.rm-dot { position: relative; z-index: 1; width: 13px; height: 13px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 0 4px rgba(95,208,255,.12); }
+.rm-info { flex: 1; display: flex; align-items: baseline; justify-content: space-between; gap: 10px; padding: 15px 2px; border-bottom: 1px solid var(--line); }
+.rm-stop:last-child .rm-info { border-bottom: none; }
+.rm-amt { font-family: var(--display); font-weight: 700; font-size: 1.12rem; }
+.rm-time { color: var(--muted); font-size: .82rem; font-weight: 600; }
+.rm-final .rm-dot { width: 20px; height: 20px; background: #f1c453; box-shadow: 0 0 0 5px rgba(241,196,83,.18); }
+.rm-final .rm-amt { font-size: 1.4rem; color: #f1c453; }
+.rm-final .rm-time { color: #f1c453; }

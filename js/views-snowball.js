@@ -42,8 +42,61 @@ window.Views = window.Views || {};
       <div class="muted small mt12">Base: tu payout promedio (${UI.usd(base)}). Edita los % para ajustarlo a tu realidad.</div>
     </div>`;
 
-    return `<div class="page">${hero}${reparto}${growthPlan(perMonth, allocs)}${portfolio()}<div class="spacer"></div></div>`;
+    return `<div class="page">${hero}${reparto}${growthPlan(perMonth, allocs)}${roadmap(perMonth, allocs)}${portfolio()}<div class="spacer"></div></div>`;
   };
+
+  // -------- El Mapa al Millón: hitos en el tiempo hasta $1,000,000 --------
+  function roadmap(perMonth, allocs) {
+    const m = money();
+    const rate = m.goalRate || 10;
+    const r = rate / 100 / 12;
+    const investPct = allocs.filter(a => a.id === 'invest' || a.id === 'reinvest').reduce((s, a) => s + a.pct, 0);
+    const aporte = Math.round(perMonth * investPct / 100);
+    const goals = [10000, 25000, 50000, 100000, 250000, 500000, 1000000];
+
+    // simulación mes a mes: reinversión constante + interés compuesto
+    const reach = {};
+    if (aporte > 0) {
+      let cap = 0;
+      for (let mo = 1; mo <= 1200 && cap < 1000000; mo++) {
+        cap = cap * (1 + r) + aporte;
+        goals.forEach(g => { if (reach[g] === undefined && cap >= g) reach[g] = mo; });
+      }
+    }
+    const fmt = mo => {
+      if (mo === undefined) return '+100 años';
+      const y = Math.floor(mo / 12), mm = mo % 12;
+      if (y === 0) return `${mm} mes${mm !== 1 ? 'es' : ''}`;
+      if (mm === 0) return `${y} año${y !== 1 ? 's' : ''}`;
+      return `${y} año${y !== 1 ? 's' : ''} ${mm} m`;
+    };
+
+    const total = reach[1000000];
+    const headline = aporte <= 0
+      ? `Ajusta tu reparto (reinvierte o invierte una parte de cada payout) para trazar tu ruta al millón.`
+      : total !== undefined
+        ? `Reinvirtiendo <b>${UI.usd(aporte)}/mes</b> a <b>${rate}% anual</b>, llegas a <b>${UI.usd(1000000)}</b> en <b>~${(total / 12).toFixed(1)} años</b>.`
+        : `Con <b>${UI.usd(aporte)}/mes</b> a ${rate}% tardarías demasiado. Sube tu aporte o el rendimiento.`;
+
+    const tiers = [8, 10, 12, 15].map(rt => `<button class="tier ${rt === rate ? 'on' : ''}" data-act="setGoalRate" data-r="${rt}">${rt}%</button>`).join('');
+
+    const stops = goals.map(g => {
+      const fin = g === 1000000;
+      return `<div class="rm-stop${fin ? ' rm-final' : ''}">
+        <div class="rm-rail"><span class="rm-dot"></span></div>
+        <div class="rm-info"><span class="rm-amt">${UI.usd(g)}${fin ? ' 🏁' : ''}</span><span class="rm-time">${reach[g] !== undefined ? 'en ' + fmt(reach[g]) : '—'}</span></div>
+      </div>`;
+    }).join('');
+
+    return `<div class="card">
+      <div class="card-head"><div class="ch-t">${UI.icon('target', '', 18)} El Mapa al Millón</div></div>
+      <p class="muted small mb12">Cada payout que reinviertes te acerca. Este es el camino a <b>$1,000,000 USD</b> con interés compuesto.</p>
+      <div class="rm-headline">${UI.icon('snow', '', 15)} <span>${headline}</span></div>
+      <div class="goal-rate mt12"><span class="muted small">Rendimiento anual</span><div class="tiers">${tiers}</div></div>
+      <div class="roadmap mt12">${stops}</div>
+      <div class="disc muted small mt12">Asume reinversión mensual constante de tus payouts a rendimiento fijo. Cifras ilustrativas; no es asesoría financiera.</div>
+    </div>`;
+  }
 
   // -------- calculadora de meta: pon un monto → cuánto/mes y en cuánto tiempo --------
   function goalCalc(perMonth, allocs) {
