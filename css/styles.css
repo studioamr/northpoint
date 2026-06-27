@@ -1152,7 +1152,7 @@ html[data-theme="dark"] .lp .lp-card, html[data-theme="dark"] .lp .lp-mod, html[
 
 /* iPhone mockups del showcase (como en las otras landings) */
 .np-iphone { width: 100%; max-width: 248px; margin: 0 auto; position: relative; background: linear-gradient(150deg, #2b3c58 0%, #121a2c 42%, #090e16 100%); border-radius: 46px; padding: 9px; box-shadow: 0 36px 70px rgba(0,0,0,.55), inset 0 0 0 1.5px rgba(150,185,235,.2), inset 0 0 0 5px #090e16; }
-.np-ip-scr { width: 100%; aspect-ratio: 459 / 793; border-radius: 38px; overflow: hidden; position: relative; background: linear-gradient(180deg, #eef4fb, #f6f9fc 42%); }
+.np-ip-scr { width: 100%; aspect-ratio: 459 / 793; border-radius: 38px; overflow: hidden; position: relative; background: #0a0f17; }
 .np-ip-island { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); width: 30%; max-width: 80px; height: 16px; background: #05080a; border-radius: 99px; z-index: 4; box-shadow: 0 0 0 1px rgba(255,255,255,.04); }
 .np-ip-btn { position: absolute; width: 3px; background: linear-gradient(90deg, #090e16, #2a3850); z-index: 1; }
 .np-ip-vol { left: -3px; top: 23%; height: 5%; border-radius: 2px 0 0 2px; box-shadow: 0 9px 0 #1a2438, 0 22px 0 #1a2438; }
@@ -1180,6 +1180,7 @@ html[data-theme="dark"] .lp .lp-card, html[data-theme="dark"] .lp .lp-mod, html[
 .np-ip-pad .as-prog { margin-bottom: 10px; }
 .np-ip-pad .as-mod { padding: 7px 0; }
 .np-ip-pad .as-mod-t { font-size: .76rem; }
+.np-ip-img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
 
 /* sea / cta nocturnos */
 .np-cta h2 { color: #eef4ff; text-shadow: 0 0 22px rgba(120,170,255,.4); }

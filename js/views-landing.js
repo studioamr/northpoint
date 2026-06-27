@@ -258,6 +258,10 @@ window.Views = window.Views || {};
   function npPhone(scr, cls) {
     return `<div class="np-iphone ${cls || ''}">${npPhoneChrome}<div class="np-ip-scr">${scr}</div></div>`;
   }
+  // captura real de la app (tomada de la app verdadera)
+  function shotImg(name, alt) {
+    return `<img class="np-ip-img" src="assets/shots/${name}.jpg" alt="${alt}" loading="lazy" />`;
+  }
   function phoneScreen(title, body) {
     return `<div class="np-ip-app">
       <div class="np-ip-sb"><span>9:41</span><span class="np-ip-sb-r">5G<span class="np-bat"></span></span></div>
@@ -289,9 +293,9 @@ window.Views = window.Views || {};
         <span class="nf-eyebrow">LA PLATAFORMA</span>
         <h2>Una brújula para tu trading.<br>Conforme bajas, la conoces.</h2>
       </div>
-      ${feature('JOURNAL', 'Cada trade, en tu calendario.', 'Dashboard con tu P&amp;L, profit factor y win rate. El calendario verde/rojo que te dice la verdad, día a día.', npPhone(psDash()), false)}
-      ${feature('SNOWBALL · INTEGRADO', 'Tu dinero, en piloto automático.', 'Snowball y tu cartera, juntos: reparte cada payout, controla tus gastos del mes y mira cuántos payouts necesitas para cubrirlos.', npPhone(psSnow()), true)}
-      ${feature('ACADEMIA', 'El curso completo, adentro.', 'De Cero a Payout: 8 módulos con tu rutina NY, ORB, gestión de riesgo y el embudo Eval → Buffer → Payout.', npPhone(psAcad()), false)}
+      ${feature('JOURNAL', 'Cada trade, en tu calendario.', 'Dashboard con tu P&amp;L, profit factor y win rate. El calendario verde/rojo que te dice la verdad, día a día.', npPhone(shotImg('dashboard', 'Dashboard del journal NorthPoint')), false)}
+      ${feature('SNOWBALL · INTEGRADO', 'Tu dinero, en piloto automático.', 'Snowball y tu cartera, juntos: reparte cada payout, controla tus gastos del mes y mira cuántos payouts necesitas para cubrirlos.', npPhone(shotImg('snowball', 'Snowball money management')), true)}
+      ${feature('ACADEMIA', 'El curso completo, adentro.', 'De Cero a Payout: 8 módulos con tu rutina NY, ORB, gestión de riesgo y el embudo Eval → Buffer → Payout.', npPhone(shotImg('academia', 'Academia · curso De Cero a Payout')), false)}
     </section>`;
   }
 
