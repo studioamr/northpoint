@@ -253,15 +253,45 @@ window.Views = window.Views || {};
       <div class="nf-shot">${shot}</div>
     </div>`;
   }
+  // -------- iPhone mockups (como en las otras landings) mostrando la app --------
+  const npPhoneChrome = `<span class="np-ip-btn np-ip-vol"></span><span class="np-ip-btn np-ip-pow"></span><span class="np-ip-island"></span>`;
+  function npPhone(scr, cls) {
+    return `<div class="np-iphone ${cls || ''}">${npPhoneChrome}<div class="np-ip-scr">${scr}</div></div>`;
+  }
+  function phoneScreen(title, body) {
+    return `<div class="np-ip-app">
+      <div class="np-ip-sb"><span>9:41</span><span class="np-ip-sb-r">5G<span class="np-bat"></span></span></div>
+      <div class="np-ip-top"><span class="np-ip-ttl">${title}</span></div>
+      <div class="np-ip-pad">${body}</div>
+    </div>`;
+  }
+  function psDash() {
+    const cells = ['up', 'up', 'down', 'up', 'none', 'none', 'none', 'up', 'down', 'up', 'up', 'up', 'none', 'none', 'up', 'flat', 'up', 'up', 'none', 'none', 'none'];
+    return phoneScreen('Dashboard', `
+      <div class="as-kpis"><div><span>PNL</span><b class="up">+$7.7K</b></div><div><span>PF</span><b>1.52</b></div><div><span>Win</span><b>44%</b></div></div>
+      <div class="np-ip-lbl">Junio · calendario de P&amp;L</div>
+      <div class="as-cal">${cells.map(c => `<span class="as-cc ${c}"></span>`).join('')}</div>`);
+  }
+  function psSnow() {
+    return phoneScreen('Snowball', `
+      <div class="np-ip-pie"><div class="pie-wrap">${UI.pie(Data.MONEY.allocations, 130)}<div class="pie-center"><b>$955</b><span class="muted small">payout</span></div></div></div>
+      <div class="as-flow"><div><span>Ingreso</span><b class="up">$3,818</b></div><div><span>Gastos</span><b class="down">$1,060</b></div><div class="hi"><span>Libre</span><b class="ice">$2,758</b></div></div>`);
+  }
+  function psAcad() {
+    const mods = [['Bienvenida y mentalidad', 100], ['La rutina del trader', 66], ['ORB + Killzones', 0], ['Gestión de riesgo', 0]];
+    return phoneScreen('Academia', `
+      <div class="as-prog"><span>24% del curso</span><div class="as-bar2"><span style="width:24%"></span></div></div>
+      ${mods.map(m => `<div class="as-mod"><span class="as-mod-ic ${m[1] === 100 ? 'done' : ''}"></span><span class="as-mod-t">${m[0]}</span><span class="as-mod-p">${m[1]}%</span></div>`).join('')}`);
+  }
   function appShowcase() {
     return `<section class="np-showcase">
       <div class="np-showcase-intro">
         <span class="nf-eyebrow">LA PLATAFORMA</span>
         <h2>Una brújula para tu trading.<br>Conforme bajas, la conoces.</h2>
       </div>
-      ${feature('JOURNAL', 'Cada trade, en tu calendario.', 'Dashboard con tu P&amp;L, profit factor y win rate. El calendario verde/rojo que te dice la verdad, día a día.', shotDashboard(), false)}
-      ${feature('SNOWBALL · INTEGRADO', 'Tu dinero, en piloto automático.', 'Snowball y tu cartera, juntos: reparte cada payout, controla tus gastos del mes y mira cuántos payouts necesitas para cubrirlos.', shotSnowball(), true)}
-      ${feature('ACADEMIA', 'El curso completo, adentro.', 'De Cero a Payout: 8 módulos con tu rutina NY, ORB, gestión de riesgo y el embudo Eval → Buffer → Payout.', shotAcademia(), false)}
+      ${feature('JOURNAL', 'Cada trade, en tu calendario.', 'Dashboard con tu P&amp;L, profit factor y win rate. El calendario verde/rojo que te dice la verdad, día a día.', npPhone(psDash()), false)}
+      ${feature('SNOWBALL · INTEGRADO', 'Tu dinero, en piloto automático.', 'Snowball y tu cartera, juntos: reparte cada payout, controla tus gastos del mes y mira cuántos payouts necesitas para cubrirlos.', npPhone(psSnow()), true)}
+      ${feature('ACADEMIA', 'El curso completo, adentro.', 'De Cero a Payout: 8 módulos con tu rutina NY, ORB, gestión de riesgo y el embudo Eval → Buffer → Payout.', npPhone(psAcad()), false)}
     </section>`;
   }
 

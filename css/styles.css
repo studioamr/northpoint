@@ -1150,6 +1150,37 @@ html[data-theme="dark"] .lp .lp-card, html[data-theme="dark"] .lp .lp-mod, html[
 .np-fcard h3 { font-family: var(--display); font-weight: 700; font-size: 1.02rem; color: #eef4ff; margin: 10px 0 6px; }
 .np-fcard p { color: #a9c6e6; font-size: .85rem; line-height: 1.5; margin: 0; }
 
+/* iPhone mockups del showcase (como en las otras landings) */
+.np-iphone { width: 100%; max-width: 248px; margin: 0 auto; position: relative; background: linear-gradient(150deg, #2b3c58 0%, #121a2c 42%, #090e16 100%); border-radius: 46px; padding: 9px; box-shadow: 0 36px 70px rgba(0,0,0,.55), inset 0 0 0 1.5px rgba(150,185,235,.2), inset 0 0 0 5px #090e16; }
+.np-ip-scr { width: 100%; aspect-ratio: 459 / 793; border-radius: 38px; overflow: hidden; position: relative; background: linear-gradient(180deg, #eef4fb, #f6f9fc 42%); }
+.np-ip-island { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); width: 30%; max-width: 80px; height: 16px; background: #05080a; border-radius: 99px; z-index: 4; box-shadow: 0 0 0 1px rgba(255,255,255,.04); }
+.np-ip-btn { position: absolute; width: 3px; background: linear-gradient(90deg, #090e16, #2a3850); z-index: 1; }
+.np-ip-vol { left: -3px; top: 23%; height: 5%; border-radius: 2px 0 0 2px; box-shadow: 0 9px 0 #1a2438, 0 22px 0 #1a2438; }
+.np-ip-pow { right: -3px; top: 30%; height: 9%; border-radius: 0 2px 2px 0; }
+.np-ip-app { position: absolute; inset: 0; display: flex; flex-direction: column; }
+.np-ip-app .muted { color: #6a829a; }
+.np-ip-sb { display: flex; justify-content: space-between; align-items: center; padding: 13px 22px 0; font-size: .6rem; font-weight: 800; color: #14304f; }
+.np-ip-sb-r { display: flex; align-items: center; gap: 4px; }
+.np-bat { width: 16px; height: 8px; border-radius: 2px; border: 1px solid #14304f; position: relative; }
+.np-bat::after { content: ''; position: absolute; inset: 1px; right: 4px; border-radius: 1px; background: #14304f; }
+.np-ip-top { padding: 8px 16px 6px; }
+.np-ip-ttl { font-family: var(--display); font-weight: 800; font-size: .92rem; color: #14304f; }
+.np-ip-pad { flex: 1; padding: 2px 14px 16px; overflow: hidden; }
+.np-ip-lbl { font-size: .64rem; color: #6a829a; margin: 4px 0 7px; font-weight: 600; }
+.np-ip-pad .as-kpis { gap: 7px; margin-bottom: 12px; }
+.np-ip-pad .as-kpis > div { padding: 7px 8px; }
+.np-ip-pad .as-kpis b { font-size: .96rem; }
+.np-ip-pad .as-kpis span { font-size: .58rem; }
+.np-ip-pad .as-cc { border-radius: 4px; }
+.np-ip-pie { display: flex; justify-content: center; margin: 6px 0 12px; }
+.np-ip-pie .pie-wrap { width: 130px; position: relative; }
+.np-ip-pie .pie-center b { color: #14304f; font-size: .95rem; }
+.np-ip-pad .as-flow { gap: 7px; }
+.np-ip-pad .as-flow > div { padding: 7px 10px; font-size: .76rem; }
+.np-ip-pad .as-prog { margin-bottom: 10px; }
+.np-ip-pad .as-mod { padding: 7px 0; }
+.np-ip-pad .as-mod-t { font-size: .76rem; }
+
 /* sea / cta nocturnos */
 .np-cta h2 { color: #eef4ff; text-shadow: 0 0 22px rgba(120,170,255,.4); }
 .np-cta p { color: #a9c6e6; }
