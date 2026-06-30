@@ -48,8 +48,8 @@ window.Views = window.Views || {};
     const nav = `<nav class="lp-nav">
       <div class="lp-brand">${UI.logo(28)} <b>NORTHPOINT</b></div>
       <div class="lp-nav-r">
-        <a class="lp-link" href="#temario">Temario</a>
-        <button class="lp-btn ghost" data-act="openApp">Crear cuenta</button>
+        <a class="lp-link" href="#pricing">Pricing</a>
+        <button class="lp-btn ghost" data-act="openApp">Get started</button>
       </div>
     </nav>`;
 
@@ -150,25 +150,115 @@ window.Views = window.Views || {};
       <p class="lp-disc">El trading de futuros implica riesgo de pérdida. Los resultados pasados no garantizan resultados futuros. Este contenido es educativo y no constituye asesoría financiera.</p>
     </footer>`;
 
-    return `<div class="lp np">${nav}${heroSky()}${appShowcase()}${featureGrid()}${seaBottom()}</div>`;
+    return `<div class="lp np">${nav}${heroSky()}${appShowcase()}${featureGrid()}${credibility()}${seaBottom()}</div>`;
   };
+
+  // ====================== CREDIBILIDAD / CERTIFICACIONES (inglés, fondo oscuro propio) ======================
+  function credibility() {
+    const firms = ['Apex', 'Tradeify', 'Topstep', 'MyFundedFutures', 'Take Profit Trader', 'Bulenox'];
+    const seals = [
+      ['shield', 'Risk-Managed Method', '1% max risk per trade, hard daily stop loss'],
+      ['lock', 'SSL Secure Checkout', '256-bit encrypted payments'],
+      ['checkc', '30-Day Money-Back', 'Full refund, no questions asked'],
+      ['academy', 'Certificate of Completion', 'Earn your Zero-to-Payout certificate'],
+      ['sync', 'Lifetime Updates', 'Every new lesson and feature, free forever'],
+      ['trophy', 'Verified Results', 'Real, documented prop-firm payouts'],
+    ];
+    const tts = [
+      ['I blew 4 accounts before this. Passed my first Apex eval in 9 days.', 'Diego R.', 'Funded · Apex 50K'],
+      ['The journal alone changed my trading. I finally see my own patterns.', 'Marisol G.', 'Tradeify 100K'],
+      ['90 minutes a day, real rules, no hype. First payout last month.', 'Andrés V.', 'Funded trader'],
+    ];
+    const faqs = [
+      ['Do I need any experience?', 'No. We start from the routine and the core concepts. If you already trade, you go straight to tightening your risk management and your payout funnel.'],
+      ['How much capital do I need?', 'You trade with prop-firm accounts (Apex, Tradeify, and more). Your investment is the evaluation fee — not your own capital at direct risk.'],
+      ['How much time per day?', 'The system trades the first 90 minutes of the New York session. Discipline over hours in front of the screen.'],
+      ['Is the app an extra cost?', 'No. The NorthPoint journal is included with the course and runs on your phone — even offline.'],
+      ['Is there a guarantee?', 'Yes. If it is not for you, email us within 30 days for a full refund. No questions asked.'],
+    ];
+    const stars = `<span class="np-stars5">${UI.icon('star', '', 13)}${UI.icon('star', '', 13)}${UI.icon('star', '', 13)}${UI.icon('star', '', 13)}${UI.icon('star', '', 13)}</span>`;
+
+    return `<section class="np-cred">
+      <div class="np-cred-inner">
+
+        <div class="np-cred-stats">
+          <div><b>11</b><span>verified payouts</span></div>
+          <div><b>$10.5K</b><span>paid out</span></div>
+          <div><b>90 min</b><span>trading a day</span></div>
+          <div><b>1.52</b><span>profit factor</span></div>
+        </div>
+
+        <div class="np-cred-block">
+          <span class="nf-eyebrow">${UI.icon('building', '', 13)} GET FUNDED WITH</span>
+          <h2>The industry's leading prop firms.</h2>
+          <div class="np-firms">${firms.map(f => `<span class="np-firm">${f}</span>`).join('')}</div>
+          <p class="np-cred-sub">You trade evaluation capital from the top prop firms — not your own money. We teach you to pass the eval and get paid.</p>
+        </div>
+
+        <div class="np-cred-block">
+          <span class="nf-eyebrow">${UI.icon('shield', '', 13)} CERTIFICATIONS &amp; GUARANTEES</span>
+          <h2>Built to be trusted.</h2>
+          <div class="np-seals">
+            ${seals.map(s => `<div class="np-seal"><span class="np-seal-ic">${UI.icon(s[0], '', 22)}</span><div><b>${s[1]}</b><span>${s[2]}</span></div></div>`).join('')}
+          </div>
+        </div>
+
+        <div class="np-cred-block">
+          <span class="nf-eyebrow">${UI.icon('users', '', 13)} WHAT STUDENTS SAY</span>
+          <h2>From quitting to cashing out.</h2>
+          <div class="np-tts">
+            ${tts.map(t => `<figure class="np-tt">${stars}<blockquote>"${t[0]}"</blockquote><figcaption><b>${t[1]}</b><span>${t[2]}</span></figcaption></figure>`).join('')}
+          </div>
+        </div>
+
+        <div class="np-price-wrap" id="pricing">
+          <div class="np-price-card">
+            <span class="np-price-badge">MOST POPULAR</span>
+            <div class="np-price-name">Zero to Payout</div>
+            <div class="np-price-row"><span class="np-price-old">$399</span><span class="np-price-now">$249</span><span class="np-price-cur">USD</span></div>
+            <div class="np-price-sub">One-time payment · lifetime access · only ${CFG.spots} seats</div>
+            <ul class="np-price-list">
+              <li>${UI.icon('check', '', 15)} Full "Zero to Payout" course — 8 modules</li>
+              <li>${UI.icon('check', '', 15)} NorthPoint journal &amp; analytics app</li>
+              <li>${UI.icon('check', '', 15)} Private community + templates</li>
+              <li>${UI.icon('check', '', 15)} Daily market bias &amp; support</li>
+              <li>${UI.icon('check', '', 15)} Certificate of completion</li>
+              <li>${UI.icon('check', '', 15)} 30-day money-back guarantee</li>
+            </ul>
+            <a class="lp-btn gold full" href="${wa()}" target="_blank" rel="noopener">${UI.icon('wapp', '', 18)} Enroll now</a>
+            <div class="np-price-guar">${UI.icon('shield', '', 14)} 30-day money-back guarantee · secure checkout</div>
+          </div>
+        </div>
+
+        <div class="np-cred-block">
+          <span class="nf-eyebrow">${UI.icon('help', '', 13)} FAQ</span>
+          <h2>Questions, answered.</h2>
+          <div class="np-faq">
+            ${faqs.map(f => `<details class="np-faq-i"><summary>${f[0]}${UI.icon('chevDown', '', 16)}</summary><p>${f[1]}</p></details>`).join('')}
+          </div>
+        </div>
+
+        <p class="np-cred-disc">Trading futures involves a substantial risk of loss. Past results do not guarantee future returns. NorthPoint is educational content and is not financial advice.</p>
+      </div>
+    </section>`;
+  }
 
   // -------- TODO LO QUE HAY: grid de funciones --------
   function featureGrid() {
     const items = [
-      ['candles', 'Journal de trades', 'Cada operación: símbolo, lado, P&L, setup, cómo operaste y notas.'],
-      ['cal', 'Calendario de P&L', 'Tu mes en verde y rojo. La verdad de tu consistencia, día a día.'],
-      ['image', 'Fotos y videos del setup', 'Adjunta el screenshot o video de tu gráfico a cada trade y a tu bitácora.'],
-      ['building', 'Cuentas de fondeo', 'Controla tus cuentas Apex / Tradeify por fase y registra cada payout.'],
-      ['snow', 'Snowball', 'Reparte cada payout: reinversión, inversión, gastos, reserva y gusto.'],
-      ['wallet', 'Cartera', 'Tus gastos del mes y cuántos payouts necesitas generar para cubrirlos.'],
-      ['academy', 'Academia', 'El curso "De Cero a Payout": 8 módulos con video y tu progreso.'],
-      ['shield', 'Plan & disciplina', 'Rutina NY, tus reglas, el contrato del trader, checklist y bitácora.'],
-      ['sync', 'Sync en vivo', 'Conecta tu cuenta y sincroniza tus trades reales en automático.'],
-      ['lock', 'Privado y offline', 'Candado con contraseña, tus datos en tu dispositivo y funciona sin internet.'],
+      ['candles', 'Trade journal', 'Every trade: symbol, side, P&L, setup, how you executed and notes.'],
+      ['cal', 'P&L calendar', 'Your month in green and red. The truth about your consistency, day by day.'],
+      ['image', 'Setup photos & video', 'Attach the screenshot or video of your chart to every trade and journal note.'],
+      ['building', 'Funded accounts', 'Track your Apex / Tradeify accounts by phase and log every payout.'],
+      ['snow', 'Snowball', 'Split every payout: reinvestment, investing, expenses, reserve and fun.'],
+      ['wallet', 'Wallet', 'Your monthly expenses and how many payouts you need to cover them.'],
+      ['academy', 'Academy', 'The "Zero to Payout" course: 8 video modules and your progress.'],
+      ['shield', 'Plan & discipline', 'NY routine, your rules, the trader\'s contract, checklist and journal.'],
+      ['sync', 'Live sync', 'Connect your account and sync your real trades automatically.'],
+      ['lock', 'Private & offline', 'Password lock, your data on your device, works without internet.'],
     ];
     return `<section class="np-grid-sec">
-      <div class="np-showcase-intro"><span class="nf-eyebrow">TODO ADENTRO</span><h2>Todo lo que hay en tu brújula.</h2></div>
+      <div class="np-showcase-intro"><span class="nf-eyebrow">ALL INSIDE</span><h2>Everything inside your compass.</h2></div>
       <div class="np-fgrid">${items.map(x => `<div class="np-fcard">${UI.icon(x[0], '', 22)}<h3>${x[1]}</h3><p>${x[2]}</p></div>`).join('')}</div>
     </section>`;
   }
@@ -212,7 +302,7 @@ window.Views = window.Views || {};
         <div class="np-sub">TRADING ANALYTICS</div>
         <button class="np-beta" data-act="openApp">Beta</button>
       </div>
-      <div class="np-cue ss-mono">// NORTHPOINT · © 2026 · Tu brújula en los mercados.<br>Scroll para zarpar ↓ &nbsp;·&nbsp; ♪ Sonido: Off</div>
+      <div class="np-cue ss-mono">// NORTHPOINT · © 2026 · Your compass in the markets.<br>Scroll to set sail ↓ &nbsp;·&nbsp; ♪ Sound: Off</div>
     </section>`;
   }
 
@@ -290,12 +380,12 @@ window.Views = window.Views || {};
   function appShowcase() {
     return `<section class="np-showcase">
       <div class="np-showcase-intro">
-        <span class="nf-eyebrow">LA PLATAFORMA</span>
-        <h2>Una brújula para tu trading.<br>Conforme bajas, la conoces.</h2>
+        <span class="nf-eyebrow">THE PLATFORM</span>
+        <h2>One compass for your trading.<br>See it as you scroll.</h2>
       </div>
-      ${feature('JOURNAL', 'Cada trade, en tu calendario.', 'Dashboard con tu P&amp;L, profit factor y win rate. El calendario verde/rojo que te dice la verdad, día a día.', npPhone(shotImg('dashboard', 'Dashboard del journal NorthPoint')), false)}
-      ${feature('SNOWBALL · INTEGRADO', 'Tu dinero, en piloto automático.', 'Snowball y tu cartera, juntos: reparte cada payout, controla tus gastos del mes y mira cuántos payouts necesitas para cubrirlos.', npPhone(shotImg('snowball', 'Snowball money management')), true)}
-      ${feature('ACADEMIA', 'El curso completo, adentro.', 'De Cero a Payout: 8 módulos con tu rutina NY, ORB, gestión de riesgo y el embudo Eval → Buffer → Payout.', npPhone(shotImg('academia', 'Academia · curso De Cero a Payout')), false)}
+      ${feature('JOURNAL', 'Every trade, on your calendar.', 'A dashboard with your P&amp;L, profit factor and win rate — plus the green/red calendar that tells you the truth, day by day.', npPhone(shotImg('dashboard', 'NorthPoint journal dashboard')), false)}
+      ${feature('SNOWBALL · BUILT IN', 'Your money, on autopilot.', 'Snowball and your wallet, together: split every payout, track your monthly expenses and see how many payouts you need to cover them.', npPhone(shotImg('snowball', 'Snowball money management')), true)}
+      ${feature('ACADEMY', 'The full course, inside.', 'Zero to Payout: 8 modules covering your NY routine, ORB, risk management and the Eval → Buffer → Payout funnel.', npPhone(shotImg('academia', 'Academy · Zero to Payout course')), false)}
     </section>`;
   }
 
@@ -303,11 +393,11 @@ window.Views = window.Views || {};
   function seaBottom() {
     return `<section class="np-sea-bottom">
       <div class="np-cta">
-        <h2>¿Listo para zarpar?</h2>
-        <p>Aprende el sistema, lleva tu journal y haz crecer tu riqueza como una bola de nieve.</p>
+        <h2>Ready to set sail?</h2>
+        <p>Learn the system, keep your journal, and grow your wealth like a snowball.</p>
         <div class="np-cta-row">
-          <button class="lp-btn gold" data-act="openApp">Crear cuenta y entrar →</button>
-          <a class="lp-btn ghost" href="${wa()}" target="_blank" rel="noopener">${UI.icon('wapp', '', 18)} Tomar el curso</a>
+          <button class="lp-btn gold" data-act="openApp">Create account &amp; enter →</button>
+          <a class="lp-btn ghost" href="${wa()}" target="_blank" rel="noopener">${UI.icon('wapp', '', 18)} Take the course</a>
         </div>
       </div>
       <div class="np-sea">
@@ -336,7 +426,7 @@ window.Views = window.Views || {};
             </g>
           </svg>
         </div>
-        <div class="np-foot ss-mono">NORTHPOINT · © 2026 · Tu brújula en los mercados. — El trading implica riesgo. Contenido educativo.</div>
+        <div class="np-foot ss-mono">NORTHPOINT · © 2026 · Your compass in the markets. — Trading involves risk. Educational content.</div>
       </div>
     </section>`;
   }
