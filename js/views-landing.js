@@ -7,7 +7,7 @@ window.Views = window.Views || {};
   const CFG = {
     whatsapp: '524434405815',          // tu número con código de país (sin +)
     waMsg: 'Hi André, I want to join the Zero to Payout course 🚀',
-    checkout: 'https://buy.stripe.com/8x23cueJd8F01nRdmjfjG00',   // Stripe Payment Link · Zero to Payout. Vacío = los botones de compra van a WhatsApp. Ver PAGOS.md
+    checkout: 'https://paypal.me/espejoazul/249USD',   // PayPal.Me · Zero to Payout ($249 preajustado). Vacío = los botones de compra van a WhatsApp. Ver PAGOS.md
     price: 4990,                        // precio en MXN
     priceOld: 7990,
     spots: 50,
@@ -229,7 +229,7 @@ window.Views = window.Views || {};
               <li>${UI.icon('check', '', 15)} 30-day money-back guarantee</li>
             </ul>
             <a class="lp-btn gold full" href="${buy()}" target="_blank" rel="noopener">${UI.icon('lock', '', 17)} Enroll now — $249 →</a>
-            <div class="np-price-guar">${UI.icon('lock', '', 14)} Secure checkout — powered by Stripe · 256-bit SSL</div>
+            <div class="np-price-guar">${UI.icon('lock', '', 14)} Secure checkout — powered by PayPal · buyer protection</div>
             <div class="np-price-guar">${UI.icon('shield', '', 14)} 30-day money-back guarantee, no questions asked</div>
             <a class="np-price-alt" href="${wa()}" target="_blank" rel="noopener">${UI.icon('wapp', '', 15)} Questions? Chat on WhatsApp</a>
           </div>
@@ -402,7 +402,7 @@ window.Views = window.Views || {};
         <div class="np-cta-row single">
           <a class="lp-btn gold lg" href="${buy()}" target="_blank" rel="noopener">${UI.icon('lock', '', 18)} Enroll now — $249 →</a>
         </div>
-        <div class="np-cta-sub">${UI.icon('lock', '', 13)} Secure checkout with Stripe · 30-day money-back guarantee</div>
+        <div class="np-cta-sub">${UI.icon('lock', '', 13)} Secure checkout with PayPal · 30-day money-back guarantee</div>
         <button class="np-cta-alt" data-act="openApp">or try the app free first →</button>
       </div>
       <div class="np-sea">
