@@ -50,8 +50,8 @@ window.Views = window.Views || {};
     const nav = `<nav class="lp-nav">
       <div class="lp-brand">${UI.logo(28)} <b>NORTHPOINT</b></div>
       <div class="lp-nav-r">
-        <a class="lp-link" href="#pricing">Pricing</a>
-        <button class="lp-btn ghost" data-act="openApp">Get started</button>
+        <button class="lp-link lp-linkbtn" data-act="openApp">Try free</button>
+        <a class="lp-btn gold nav" href="#pricing">Enroll · $249</a>
       </div>
     </nav>`;
 
@@ -184,17 +184,18 @@ window.Views = window.Views || {};
       <div class="np-cred-inner">
 
         <div class="np-cred-stats">
-          <div><b>11</b><span>verified payouts</span></div>
+          <div><b>11</b><span>payouts</span></div>
           <div><b>$10.5K</b><span>paid out</span></div>
           <div><b>90 min</b><span>trading a day</span></div>
           <div><b>1.52</b><span>profit factor</span></div>
         </div>
+        <p class="np-stats-note">Founder's documented results, shown for illustration. Trading involves risk — your results will vary.</p>
 
         <div class="np-cred-block">
           <span class="nf-eyebrow">${UI.icon('building', '', 13)} GET FUNDED WITH</span>
           <h2>The industry's leading prop firms.</h2>
           <div class="np-firms">${firms.map(f => `<span class="np-firm">${f}</span>`).join('')}</div>
-          <p class="np-cred-sub">You trade evaluation capital from the top prop firms — not your own money. We teach you to pass the eval and get paid.</p>
+          <p class="np-cred-sub">You trade evaluation capital from the top prop firms — not your own money. <b>Module 0 walks you through opening your first funded account, step by step</b> — then we teach you to pass the eval and get paid.</p>
         </div>
 
         <div class="np-cred-block">
@@ -228,7 +229,8 @@ window.Views = window.Views || {};
               <li>${UI.icon('check', '', 15)} 30-day money-back guarantee</li>
             </ul>
             <a class="lp-btn gold full" href="${buy()}" target="_blank" rel="noopener">${UI.icon('lock', '', 17)} Enroll now — $249 →</a>
-            <div class="np-price-guar">${UI.icon('shield', '', 14)} 30-day money-back guarantee · secure checkout</div>
+            <div class="np-price-guar">${UI.icon('lock', '', 14)} Secure checkout — powered by Stripe · 256-bit SSL</div>
+            <div class="np-price-guar">${UI.icon('shield', '', 14)} 30-day money-back guarantee, no questions asked</div>
             <a class="np-price-alt" href="${wa()}" target="_blank" rel="noopener">${UI.icon('wapp', '', 15)} Questions? Chat on WhatsApp</a>
           </div>
         </div>
@@ -259,7 +261,7 @@ window.Views = window.Views || {};
       ['lock', 'Private & offline', 'Password lock, your data on your device, works without internet.'],
     ];
     return `<section class="np-grid-sec">
-      <div class="np-showcase-intro"><span class="nf-eyebrow">THE JOURNAL + THE COURSE</span><h2>Everything you need to reach payout.</h2></div>
+      <div class="np-showcase-intro"><span class="nf-eyebrow">THE JOURNAL + THE COURSE</span><h2>Everything you need to reach payout.</h2><p class="np-showcase-note">One purchase: the <b>Zero to Payout course</b> — the journal &amp; AI app comes <b>included, free</b>.</p></div>
       <div class="np-fgrid">${items.map(x => `<div class="np-fcard">${UI.icon(x[0], '', 22)}<h3>${x[1]}</h3><p>${x[2]}</p></div>`).join('')}</div>
     </section>`;
   }
@@ -397,10 +399,11 @@ window.Views = window.Views || {};
         <span class="nf-eyebrow">YOUR COMPASS</span>
         <h2>Lost in the markets? We light the way.</h2>
         <p>You're the sailor. NorthPoint is the North Star that guides you — from your first funded eval, through the buffer, to cashing your payout.</p>
-        <div class="np-cta-row">
-          <a class="lp-btn gold" href="${buy()}" target="_blank" rel="noopener">${UI.icon('academy', '', 17)} Enroll — $249</a>
-          <button class="lp-btn ghost" data-act="openApp">Try the app free →</button>
+        <div class="np-cta-row single">
+          <a class="lp-btn gold lg" href="${buy()}" target="_blank" rel="noopener">${UI.icon('lock', '', 18)} Enroll now — $249 →</a>
         </div>
+        <div class="np-cta-sub">${UI.icon('lock', '', 13)} Secure checkout with Stripe · 30-day money-back guarantee</div>
+        <button class="np-cta-alt" data-act="openApp">or try the app free first →</button>
       </div>
       <div class="np-sea">
         <svg class="np-guide" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true">

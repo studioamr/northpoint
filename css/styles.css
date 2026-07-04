@@ -1374,4 +1374,152 @@ html[data-theme="dark"] .lp .lp-card, html[data-theme="dark"] .lp .lp-mod, html[
 .coach-rules .rule-list li::before { content: counter(r); position: absolute; left: 0; top: 10px; width: 24px; height: 24px; border-radius: 7px; background: rgba(95,208,255,.12); color: var(--cyan); font-weight: 700; font-size: .78rem; display: grid; place-items: center; }
 .coach-foot { display: flex; flex-direction: column; gap: 12px; }
 .coach-foot .btn-row { flex-wrap: wrap; }
+
+/* ============================================================
+   RUTINA DE SESIÓN — co-piloto Jarvis
+   ============================================================ */
+
+/* Jarvis header */
+.rt-jarvis { display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  background: linear-gradient(135deg, var(--card), rgba(61,107,245,.09)); }
+.rt-j-left { display: flex; align-items: center; gap: 12px; }
+.rt-j-orb { width: 44px; height: 44px; border-radius: 50%;
+  border: 1.5px solid var(--brand); display: grid; place-items: center;
+  background: rgba(61,107,245,.12); flex: none; }
+.rt-j-orb .ic { color: var(--brand2); }
+
+/* Phase tabs */
+.rt-tabs { display: flex; gap: 8px; }
+.rt-tab { flex: 1; display: flex; align-items: center; justify-content: center; gap: 7px;
+  padding: 10px 8px; border-radius: var(--radius-sm); border: 1px solid var(--line);
+  background: var(--card); color: var(--muted); font-size: .84rem; font-weight: 600;
+  transition: .15s; cursor: pointer; }
+.rt-tab:hover { border-color: var(--line2); color: var(--txt); }
+.rt-tab.on { background: rgba(61,107,245,.16); border-color: var(--brand);
+  color: var(--brand2); }
+.rt-tab.done { background: rgba(34,197,94,.1); border-color: rgba(34,197,94,.4);
+  color: var(--up); }
+.rt-tab .ic { flex: none; }
+
+/* Daily bias selector */
+.rt-bias-row { display: flex; gap: 10px; }
+.bias-btn { flex: 1; padding: 10px 8px; border-radius: var(--radius-sm);
+  border: 1px solid var(--line); background: var(--card2); color: var(--muted);
+  font-size: .84rem; font-weight: 700; letter-spacing: .03em; transition: .15s; }
+.bias-btn:hover { border-color: var(--line2); color: var(--txt); }
+.bias-btn.on { background: var(--card); }
+
+/* Rules checklist */
+.rt-rules { display: flex; flex-direction: column; }
+.rt-rule { display: flex; align-items: flex-start; gap: 11px; padding: 11px 0;
+  border-top: 1px solid var(--line); text-align: left; font-size: .88rem;
+  line-height: 1.45; color: var(--muted); transition: .12s; }
+.rt-rule:first-child { border-top: 0; }
+.rt-rule:hover { color: var(--txt); }
+.rt-rule.on { color: var(--txt); }
+.rt-rule.on .rt-ric .ic { color: var(--up); }
+.rt-ric { flex: none; margin-top: 1px; }
+
+/* Live session HUD */
+.rt-hud { display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 20px; gap: 16px;
+  background: linear-gradient(135deg, var(--card), rgba(61,107,245,.07)); }
+.rt-hud-col { display: flex; flex-direction: column; gap: 3px; }
+.rt-timer { font-family: 'Sora', sans-serif; font-size: 1.5rem; font-weight: 800;
+  letter-spacing: .02em; color: var(--brand2); font-variant-numeric: tabular-nums; }
+
+/* Trade log row */
+.rt-trow { display: flex; align-items: center; justify-content: space-between;
+  padding: 9px 0; border-top: 1px solid var(--line); gap: 10px; }
+.rt-trow:first-child { border-top: 0; }
+
+/* Alert banners */
+.rt-alert { display: flex; align-items: center; gap: 14px; padding: 14px 16px; }
+.rt-alert .ic { flex: none; }
+.rt-alert.danger { border-color: rgba(239,68,68,.5); background: rgba(239,68,68,.09); color: var(--down2); }
+.rt-alert.danger .bold { color: var(--down); }
+.rt-alert.success { border-color: rgba(34,197,94,.5); background: rgba(34,197,94,.09); color: var(--up2); }
+.rt-alert.success .bold { color: var(--up); }
+
+/* Chip result picker */
+.rt-chips { display: flex; gap: 8px; }
+.rt-chips .chip { flex: 1; text-align: center; }
+
+/* Utility */
+.mt4 { margin-top: 4px; }
+.mt6 { margin-top: 6px; }
+
+/* Studio tab — separate accent from phase tabs */
+.rt-tab.studio { border-color: rgba(6,182,212,.3); color: var(--muted); }
+.rt-tab.studio:hover { border-color: rgba(6,182,212,.6); color: #22d3ee; }
+.rt-tab.studio.on { background: rgba(6,182,212,.12); border-color: #06b6d4; color: #22d3ee; }
+
+/* OBS status badge in Jarvis header */
+.obs-badge { font-size: .74rem; font-weight: 700; letter-spacing: .04em;
+  padding: 3px 9px; border-radius: 20px; font-family: 'Space Grotesk', sans-serif; }
+.obs-badge.on  { background: rgba(34,197,94,.14); color: var(--up); border: 1px solid rgba(34,197,94,.3); }
+.obs-badge.off { background: rgba(138,151,168,.1); color: var(--muted); border: 1px solid var(--line); }
+
+/* OBS status dot (inline) */
+.obs-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; vertical-align: middle; }
+.obs-dot.on  { background: var(--up); box-shadow: 0 0 6px var(--up); }
+.obs-dot.off { background: var(--muted2); }
+
+/* OBS connected success card */
+.obs-ok-card { border-color: rgba(34,197,94,.25) !important; background: rgba(34,197,94,.05) !important; }
+
+/* Code path pill */
+.obs-path { display: block; font-family: 'Space Grotesk', monospace; font-size: .79rem;
+  background: var(--card2); border: 1px solid var(--line2); border-radius: 8px;
+  padding: 8px 12px; color: var(--brand2); word-break: break-all; }
+
+/* Studio section headers */
+.studio-section-head { display: flex; align-items: center; gap: 7px;
+  font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--muted); margin: 20px 0 8px; }
+.studio-section-head:first-child { margin-top: 0; }
+.studio-section-head .ic { flex: none; }
+.studio-section-head button { flex: none; }
+
+/* Clip rows */
+.clip-row { display: flex; align-items: flex-start; gap: 12px;
+  padding: 10px 0; border-top: 1px solid var(--line); }
+.clip-row:first-child { border-top: 0; }
+.clip-num { width: 24px; height: 24px; border-radius: 6px; flex: none;
+  background: rgba(61,107,245,.16); color: var(--brand2);
+  font-size: .78rem; font-weight: 700; display: grid; place-items: center; }
+
+/* CapCut guide steps */
+.studio-step { display: flex; align-items: flex-start; gap: 12px;
+  padding: 10px 0; border-top: 1px solid var(--line); }
+.studio-step:first-child { border-top: 0; }
+.studio-n { width: 22px; height: 22px; border-radius: 50%; flex: none;
+  background: rgba(61,107,245,.16); color: var(--brand2);
+  font-size: .76rem; font-weight: 700; display: grid; place-items: center; margin-top: 1px; }
+
+/* Publish workflow rows */
+.pub-step { display: flex; align-items: flex-start; gap: 10px; padding: 7px 0;
+  border-top: .5px solid var(--line); }
+.pub-step:first-child { border-top: 0; }
+.pub-step .studio-n { background: rgba(6,182,212,.14); color: #22d3ee; }
+
+@media (max-width: 680px) {
+  .rt-tabs { gap: 6px; }
+  .rt-tab { font-size: .76rem; padding: 8px 4px; gap: 4px; }
+  .rt-bias-row { flex-direction: column; }
+  .rt-hud { flex-direction: column; align-items: flex-start; gap: 10px; }
+}
 @media (max-width: 640px) { .gp-out { grid-template-columns: 1fr; } }
+
+/* ===== Landing conversion polish (single CTA, price up top, trust, clarity) ===== */
+.lp-btn.gold.nav { padding: 9px 16px; font-size: .88rem; box-shadow: 0 6px 16px rgba(255,210,74,.24); }
+.lp-linkbtn { background: none; border: 0; cursor: pointer; font-family: inherit; }
+.np-showcase-note { max-width: 44ch; margin: 12px auto 0; color: #9fc0df; font-size: .95rem; line-height: 1.5; }
+.np-showcase-note b { color: #eaf3fb; }
+.np-stats-note { text-align: center; color: #7f9bbb; font-size: .74rem; margin: 12px 0 0; line-height: 1.5; }
+.np-cta-row.single { flex-direction: column; align-items: center; }
+.lp-btn.gold.lg { font-size: 1.05rem; padding: 15px 30px; }
+.np-cta-sub { display: flex; align-items: center; justify-content: center; gap: 7px; margin-top: 14px; color: #285079; font-size: .82rem; font-weight: 600; }
+.np-cta-sub .ic { color: #2e6da0; }
+.np-cta-alt { display: inline-block; margin-top: 12px; background: none; border: 0; cursor: pointer; font-family: inherit; color: #2e6da0; font-size: .9rem; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.np-cta-alt:hover { color: #0c2740; }
