@@ -17,10 +17,6 @@ const App = (() => {
     { r: 'coach', ic: 'cockpit', label: 'AI Coach' },
     { r: 'calendario', ic: 'cal', label: 'Calendar' },
     { r: 'cuentas', ic: 'building', label: 'Accounts' },
-    { group: 'YOU' },
-    { r: 'snowball', ic: 'snow', label: 'Snowball' },
-    { r: 'cartera', ic: 'wallet', label: 'Wallet' },
-    { r: 'plan', ic: 'shield', label: 'Plan' },
   ];
   const TITLES = { inicio: 'Home', academia: 'Academy', lesson: 'Academy', dashboard: 'Journal · Dashboard', trades: 'Trades', coach: 'Coach · Your trading analysis', calendario: 'Calendar', cuentas: 'Accounts', snowball: 'Snowball · Money Management', cartera: 'Wallet', plan: 'Plan & Discipline' };
 

@@ -246,19 +246,17 @@ window.Views = window.Views || {};
   // -------- TODO LO QUE HAY: grid de funciones --------
   function featureGrid() {
     const items = [
-      ['candles', 'Trade journal', 'Every trade: symbol, side, P&L, setup, how you executed and notes.'],
+      ['cockpit', 'AI Coach', 'An AI reads your whole history and turns your edge — best hours, setups, mistakes — into mechanizable rules.'],
+      ['candles', 'Trade journal', 'Log every trade: symbol, side, P&L, setup and how you executed. The habit that makes you profitable.'],
       ['cal', 'P&L calendar', 'Your month in green and red. The truth about your consistency, day by day.'],
-      ['image', 'Setup photos & video', 'Attach the screenshot or video of your chart to every trade and journal note.'],
+      ['image', 'Setup photos & video', 'Attach the screenshot or video of your chart to every trade.'],
       ['building', 'Funded accounts', 'Track your Apex / Tradeify accounts by phase and log every payout.'],
-      ['snow', 'Snowball', 'Split every payout: reinvestment, investing, expenses, reserve and fun.'],
-      ['wallet', 'Wallet', 'Your monthly expenses and how many payouts you need to cover them.'],
-      ['academy', 'Academy', 'The "Zero to Payout" course: 8 video modules and your progress.'],
-      ['shield', 'Plan & discipline', 'NY routine, your rules, the trader\'s contract, checklist and journal.'],
+      ['academy', 'Zero to Payout course', '8 video modules, from your first eval to cashing your payout.'],
       ['sync', 'Live sync', 'Connect your account and sync your real trades automatically.'],
       ['lock', 'Private & offline', 'Password lock, your data on your device, works without internet.'],
     ];
     return `<section class="np-grid-sec">
-      <div class="np-showcase-intro"><span class="nf-eyebrow">ALL INSIDE</span><h2>Everything inside your compass.</h2></div>
+      <div class="np-showcase-intro"><span class="nf-eyebrow">THE JOURNAL + THE COURSE</span><h2>Everything you need to reach payout.</h2></div>
       <div class="np-fgrid">${items.map(x => `<div class="np-fcard">${UI.icon(x[0], '', 22)}<h3>${x[1]}</h3><p>${x[2]}</p></div>`).join('')}</div>
     </section>`;
   }
@@ -381,51 +379,83 @@ window.Views = window.Views || {};
     return `<section class="np-showcase">
       <div class="np-showcase-intro">
         <span class="nf-eyebrow">THE PLATFORM</span>
-        <h2>One compass for your trading.<br>See it as you scroll.</h2>
+        <h2>The journal that coaches you<br>to your first payout.</h2>
       </div>
       ${feature('JOURNAL', 'Every trade, on your calendar.', 'A dashboard with your P&amp;L, profit factor and win rate — plus the green/red calendar that tells you the truth, day by day.', npPhone(shotImg('dashboard', 'NorthPoint journal dashboard')), false)}
-      ${feature('SNOWBALL · BUILT IN', 'Your money, on autopilot.', 'Snowball and your wallet, together: split every payout, track your monthly expenses and see how many payouts you need to cover them.', npPhone(shotImg('snowball', 'Snowball money management')), true)}
+      ${feature('AI COACH', 'A journal that studies you back.', 'Every trade you log feeds an AI that finds your edge — your best hours, setups and mistakes — and turns it into clear rules. Your journal, but it coaches you.', npPhone(shotImg('coach', 'AI Coach — your trading analyzed')), true)}
       ${feature('ACADEMY', 'The full course, inside.', 'Zero to Payout: 8 modules covering your NY routine, ORB, risk management and the Eval → Buffer → Payout funnel.', npPhone(shotImg('academia', 'Academy · Zero to Payout course')), false)}
     </section>`;
   }
 
-  // -------- FONDO: el mar + marinero + CTA --------
+  // -------- BOTTOM: the lost sailor, guided by NorthPoint to the payout --------
   function seaBottom() {
     return `<section class="np-sea-bottom">
       <div class="np-cta">
-        <h2>Ready to set sail?</h2>
-        <p>Learn the system, keep your journal, and grow your wealth like a snowball.</p>
+        <span class="nf-eyebrow">YOUR COMPASS</span>
+        <h2>Lost in the markets? We light the way.</h2>
+        <p>You're the sailor. NorthPoint is the North Star that guides you — from your first funded eval, through the buffer, to cashing your payout.</p>
         <div class="np-cta-row">
-          <button class="lp-btn gold" data-act="openApp">Create account &amp; enter →</button>
+          <button class="lp-btn gold" data-act="openApp">Start the journey →</button>
           <a class="lp-btn ghost" href="${wa()}" target="_blank" rel="noopener">${UI.icon('wapp', '', 18)} Take the course</a>
         </div>
       </div>
       <div class="np-sea">
+        <svg class="np-guide" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+          <defs>
+            <radialGradient id="npStarG"><stop offset="0" stop-color="#eaf4ff" stop-opacity=".9"/><stop offset="1" stop-color="#eaf4ff" stop-opacity="0"/></radialGradient>
+            <linearGradient id="npBeamG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bcd8ff" stop-opacity=".45"/><stop offset="1" stop-color="#bcd8ff" stop-opacity="0"/></linearGradient>
+            <linearGradient id="npLhBeam" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffe6a8" stop-opacity=".5"/><stop offset="1" stop-color="#ffe6a8" stop-opacity="0"/></linearGradient>
+          </defs>
+
+          <!-- guiding beam from the star down to the route -->
+          <path class="np-beam" d="M600,58 L455,300 L770,300 Z" fill="url(#npBeamG)"/>
+
+          <!-- north star (the compass) -->
+          <circle class="np-star-halo" cx="600" cy="50" r="58" fill="url(#npStarG)"/>
+          <g class="np-northstar" transform="translate(600,50)">
+            <polygon points="0,-34 8,-8 34,0 8,8 0,34 -8,8 -34,0 -8,-8" fill="#eef6ff"/>
+            <polygon points="0,-17 5,-5 17,0 5,5 0,17 -5,5 -17,0 -5,-5" fill="#9fc2ea"/>
+            <circle r="4.5" fill="#0a1a2e" stroke="#eef6ff" stroke-width="1.6"/>
+          </g>
+
+          <!-- the guided route: eval → buffer → payout -->
+          <path class="np-route" d="M225,238 C430,228 520,198 660,184 C800,170 905,150 1012,132" fill="none" stroke="#e9c46a" stroke-width="3.4" stroke-linecap="round" stroke-dasharray="2 13"/>
+
+          <!-- waypoints -->
+          <g class="np-wp">
+            <circle cx="475" cy="204" r="7" fill="#6fc1e8"/><circle cx="475" cy="204" r="12" fill="none" stroke="#6fc1e8" stroke-opacity=".4"/>
+            <text x="475" y="228" text-anchor="middle" class="np-wp-t">EVAL</text>
+            <circle cx="735" cy="171" r="7" fill="#6fc1e8"/><circle cx="735" cy="171" r="12" fill="none" stroke="#6fc1e8" stroke-opacity=".4"/>
+            <text x="735" y="195" text-anchor="middle" class="np-wp-t">BUFFER</text>
+          </g>
+
+          <!-- lighthouse = payout -->
+          <path class="np-lhbeam" d="M1012,120 L1200,66 L1200,176 Z" fill="url(#npLhBeam)"/>
+          <g class="np-lh">
+            <path d="M1002,238 L1006,150 L1018,150 L1022,238 Z" fill="#eef3f8"/>
+            <rect x="1004" y="176" width="16" height="12" fill="#d34f4f"/><rect x="1004" y="206" width="16" height="12" fill="#d34f4f"/>
+            <rect x="1003" y="140" width="18" height="12" rx="2" fill="#20344e"/>
+            <circle cx="1012" cy="130" r="9" fill="#ffe6a8"/><circle class="np-lh-core" cx="1012" cy="130" r="4.5" fill="#fff"/>
+            <path d="M1000,148 L1024,148 L1021,142 L1003,142 Z" fill="#cdd9e6"/>
+            <text x="1012" y="258" text-anchor="middle" class="np-wp-t gold">PAYOUT 🏁</text>
+          </g>
+
+          <!-- the sailor's boat, at the start of the route -->
+          <g class="np-boat2" transform="translate(210,232)">
+            <path d="M-4,-58 L-4,-4 L34,-12 Z" fill="#eef3f8"/>
+            <path d="M-8,-60 L-8,-2 L-40,-12 Z" fill="#ffffff"/>
+            <rect x="-8" y="-62" width="4" height="60" rx="2" fill="#7a5a3a"/>
+            <path d="M-46,0 Q0,34 44,0 L34,20 Q0,42 -34,20 Z" fill="#1f3f63"/>
+            <path d="M-46,0 Q0,34 44,0 L40,7 Q0,38 -40,7 Z" fill="#2c537c"/>
+            <g transform="translate(-6,-24)"><rect x="-6" y="8" width="12" height="18" rx="4" fill="#2b6da8"/><circle cx="0" cy="2" r="6.5" fill="#f3c9a0"/><path d="M-7,0 a7 4 0 0 1 14 0 Z" fill="#1f3550"/><rect x="-7" y="-1" width="14" height="2" rx="1" fill="#1f3550"/></g>
+          </g>
+        </svg>
+
         <svg class="np-waves" viewBox="0 0 1440 320" preserveAspectRatio="none">
           <path class="w w1" d="M0,160 C240,110 480,210 720,170 C960,130 1200,210 1440,160 L1440,320 L0,320 Z"/>
           <path class="w w2" d="M0,200 C240,160 480,250 720,210 C960,175 1200,250 1440,205 L1440,320 L0,320 Z"/>
           <path class="w w3" d="M0,245 C240,215 480,285 720,250 C960,220 1200,285 1440,250 L1440,320 L0,320 Z"/>
         </svg>
-        <div class="np-boat">
-          <svg viewBox="0 0 220 170" aria-hidden="true">
-            <path d="M112 18 L112 104 L168 96 Z" fill="#eef3f8"/>
-            <path d="M112 18 L112 104 L168 96 Z" fill="none" stroke="#cdd9e6" stroke-width="2"/>
-            <path d="M112 40 L150 92 M112 64 L142 93 M112 86 L134 94" stroke="#d34f4f" stroke-width="3" opacity=".55"/>
-            <path d="M108 16 L108 110 L72 100 Z" fill="#ffffff"/>
-            <rect x="108" y="14" width="4" height="96" rx="2" fill="#7a5a3a"/>
-            <path d="M36 108 Q110 150 186 108 L172 132 Q110 162 50 132 Z" fill="#1f3f63"/>
-            <path d="M36 108 Q110 150 186 108 L182 116 Q110 154 40 116 Z" fill="#2c537c"/>
-            <path d="M52 118 H170" stroke="#e8eef4" stroke-width="3" opacity=".7"/>
-            <g transform="translate(86 78)">
-              <rect x="-7" y="10" width="14" height="22" rx="5" fill="#2b6da8"/>
-              <path d="M-7 14 H7 M-7 20 H7" stroke="#fff" stroke-width="2.4" opacity=".85"/>
-              <circle cx="0" cy="3" r="8" fill="#f3c9a0"/>
-              <path d="M-9 0 a9 5 0 0 1 18 0 Z" fill="#1f3550"/>
-              <rect x="-9" y="-1" width="18" height="2.4" rx="1.2" fill="#1f3550"/>
-              <circle cx="0" cy="-3.4" r="1.6" fill="#d34f4f"/>
-            </g>
-          </svg>
-        </div>
         <div class="np-foot ss-mono">NORTHPOINT · © 2026 · Your compass in the markets. — Trading involves risk. Educational content.</div>
       </div>
     </section>`;
