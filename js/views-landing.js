@@ -7,7 +7,7 @@ window.Views = window.Views || {};
   const CFG = {
     whatsapp: '524434405815',          // tu número con código de país (sin +)
     waMsg: 'Hi André, I want to join the Zero to Payout course 🚀',
-    checkout: '',                      // ← PEGA AQUÍ tu link de pago (Stripe Payment Link / Gumroad / Lemon Squeezy / MercadoPago / Hotmart). Vacío = los botones de compra van a WhatsApp. Ver PAGOS.md
+    checkout: 'https://buy.stripe.com/8x23cueJd8F01nRdmjfjG00',   // Stripe Payment Link · Zero to Payout. Vacío = los botones de compra van a WhatsApp. Ver PAGOS.md
     price: 4990,                        // precio en MXN
     priceOld: 7990,
     spots: 50,
