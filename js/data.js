@@ -115,6 +115,20 @@ const Data = (() => {
   const allLessons = () => COURSE.flatMap(m => m.lessons.map(l => ({ ...l, moduleId: m.id })));
   const lessonById = id => allLessons().find(l => l.id === id);
 
+  // Video de cada lección (YouTube ID). Curado por tema (masterclass mejor valorada).
+  // ⚠️ Reemplázalos por TUS grabaciones antes de vender el curso como propio.
+  const LESSON_VIDEOS = {
+    l01: 'ZqFHWBJVZEw', l02: 'u1sabe0nlyo', l03: 'dUxax72KeLQ', l04: 'tng5x3ylGko',
+    l11: '_jWWfY_pesY', l12: 'ESbz61m9nL8', l13: 'DhLt6dnWfXo',
+    l21: 'Htm0QoACMGQ', l22: 'jlShztsY3oA', l23: '155VZ1x0yKI',
+    l31: 'UVBtQKooOAU', l32: 'qM5liah_6QI',
+    l41: 'NrsL_HjIvDo', l42: 'QrYW_qzWmrg', l43: 'RjR2kTErlq4',
+    l51: 'pSWzuugtQOY', l52: 'JAEP7J5--yM', l53: 'Lh-_tATmUpk',
+    l61: 'TIkOqoMB1-0', l62: 'jWdjavtoQL0', l63: 'RqV_j1LgjoU',
+    l71: '1m7HcOUYsS0', l72: 'TcoSQ1374J0',
+    l81: 'YkESiGYvsCo', l82: 'rrl1LFHTsyI',
+  };
+
   // ---- plan (from the NorthPoint · Zero to Hero PDF) ----
   const PLAN = {
     pledge: 'I commit to respecting the structure of this plan above any emotional impulse. Profitability is not luck: it is the result of following my risk rules and my schedule without exception. I show up to every session, I follow the plan, and I trade until I cash the payout. My discipline is my financial freedom.',
@@ -311,6 +325,6 @@ const Data = (() => {
   return {
     FIRMS, firmOf, PHASES, phaseOf, ACC_STATUS, statusOf,
     INSTRUMENTS, SETUPS, setupOf, RESULTS, EMOTIONS,
-    COURSE, allLessons, lessonById, PLAN, HOME, MONEY, PORTFOLIO, seed,
+    COURSE, allLessons, lessonById, LESSON_VIDEOS, PLAN, HOME, MONEY, PORTFOLIO, seed,
   };
 })();

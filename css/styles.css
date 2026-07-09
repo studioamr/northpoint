@@ -122,6 +122,7 @@ a { color: inherit; text-decoration: none; }
 /* lección */
 .lesson-grid { display: grid; grid-template-columns: 1fr 320px; gap: 18px; align-items: start; }
 .video { aspect-ratio: 16/9; background: radial-gradient(circle at 50% 40%, #18233c, #0b111c); border: 1px solid var(--line); border-radius: var(--radius); display: grid; place-items: center; overflow: hidden; }
+.video-embed { width: 100%; height: 100%; border: 0; display: block; }
 .video-ph { display: flex; flex-direction: column; align-items: center; gap: 6px; color: var(--muted); }
 .video-ph .ic { color: var(--brand2); opacity: .8; }
 .video-ph span { font-weight: 600; }

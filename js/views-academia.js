@@ -65,9 +65,9 @@ window.Views = window.Views || {};
       <button class="link mb12" data-act="go" data-route="academia">${UI.icon('back', '', 15)} Back to Academy</button>
       <div class="lesson-grid">
         <div class="lesson-main">
-          <div class="video">
-            <div class="video-ph">${UI.icon('playc', '', 56)}<span>Lesson video</span><small class="muted">Paste your video (YouTube/Vimeo) here when you publish</small></div>
-          </div>
+          <div class="video">${(Data.LESSON_VIDEOS && Data.LESSON_VIDEOS[l.id])
+            ? `<iframe class="video-embed" src="https://www.youtube-nocookie.com/embed/${Data.LESSON_VIDEOS[l.id]}?rel=0&modestbranding=1" title="${UI.esc(l.title)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>`
+            : `<div class="video-ph">${UI.icon('playc', '', 56)}<span>Lesson video</span><small class="muted">Paste your video (YouTube/Vimeo) here when you publish</small></div>`}</div>
           <div class="lesson-meta">
             <span class="pill-mod" style="color:${mod.color};border-color:${mod.color}55">Module ${mod.n}</span>
             <span class="muted small">${UI.icon('clock', '', 13)} ${l.dur}</span>
