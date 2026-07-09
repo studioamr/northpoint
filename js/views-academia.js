@@ -43,8 +43,30 @@ window.Views = window.Views || {};
       </div>`;
     }).join('');
 
-    return `<div class="page">${hero}<div class="modgrid">${modules}</div></div>`;
+    return `<div class="page">${hero}<div class="modgrid">${modules}</div>${resources()}</div>`;
   };
+
+  // -------- RECOMMENDED RESOURCES --------
+  function resources() {
+    const R = Data.RESOURCES; if (!R) return '';
+    const link = (title, sub, url, extra) => `<a class="res-item" href="${url}" target="_blank" rel="noopener">
+      <span class="res-tt">${UI.esc(title)}${extra ? ` <em>${UI.esc(extra)}</em>` : ''}</span>
+      <span class="res-sub muted small">${UI.esc(sub)}</span>
+      <span class="res-go">${UI.icon('share', '', 15)}</span></a>`;
+    const sec = (ic, name, items) => `<div class="res-sec">
+      <div class="res-head">${UI.icon(ic, '', 16)} ${name}</div>
+      <div class="res-list">${items}</div></div>`;
+    return `<div class="card res-card">
+      <div class="ch-t mb4">${UI.icon('gift', '', 17)} Recommended resources</div>
+      <p class="muted small mb12">Books, live news and channels to go beyond the course. Curated — not affiliated.</p>
+      <div class="res-grid">
+        ${sec('book', 'Books', R.books.map(b => link(b[0], b[2], b[3], b[1])).join(''))}
+        ${sec('bolt', 'News &amp; data', R.news.map(n => link(n[0], n[1], n[2])).join(''))}
+        ${sec('play', 'Channels', R.channels.map(c => link(c[0], c[1], c[2])).join(''))}
+        ${sec('building', 'Tools', R.tools.map(t => link(t[0], t[1], t[2])).join(''))}
+      </div>
+    </div>`;
+  }
 
   // -------- LESSON --------
   V.lesson = function () {
@@ -68,6 +90,7 @@ window.Views = window.Views || {};
           <div class="video">${(Data.LESSON_VIDEOS && Data.LESSON_VIDEOS[l.id])
             ? `<iframe class="video-embed" src="https://www.youtube-nocookie.com/embed/${Data.LESSON_VIDEOS[l.id]}?rel=0&modestbranding=1" title="${UI.esc(l.title)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>`
             : `<div class="video-ph">${UI.icon('playc', '', 56)}<span>Lesson video</span><small class="muted">Paste your video (YouTube/Vimeo) here when you publish</small></div>`}</div>
+          ${(Data.LESSON_VIDEOS && Data.LESSON_VIDEOS[l.id]) ? `<div class="video-cap muted small">${UI.icon('academy', '', 12)} Recommended masterclass · curated pick for this topic</div>` : ''}
           <div class="lesson-meta">
             <span class="pill-mod" style="color:${mod.color};border-color:${mod.color}55">Module ${mod.n}</span>
             <span class="muted small">${UI.icon('clock', '', 13)} ${l.dur}</span>

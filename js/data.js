@@ -129,6 +129,36 @@ const Data = (() => {
     l81: 'YkESiGYvsCo', l82: 'rrl1LFHTsyI',
   };
 
+  // ---- Recursos recomendados (libros, noticias, canales, herramientas) ----
+  const RESOURCES = {
+    books: [
+      ['Trading in the Zone', 'Mark Douglas', 'The bible of trading psychology: think in probabilities, act without fear.', 'https://www.amazon.com/s?k=trading+in+the+zone+mark+douglas'],
+      ['The Daily Trading Coach', 'Brett Steenbarger', '101 lessons to become your own coach and fix your patterns.', 'https://www.amazon.com/s?k=daily+trading+coach+steenbarger'],
+      ['Reminiscences of a Stock Operator', 'Edwin Lefèvre', 'The timeless classic — human nature in the markets never changes.', 'https://www.amazon.com/s?k=reminiscences+of+a+stock+operator'],
+      ['Market Wizards', 'Jack Schwager', 'Interviews with the best traders alive. Spot the common patterns.', 'https://www.amazon.com/s?k=market+wizards+schwager'],
+      ['Trading for a Living', 'Alexander Elder', 'Mind, method and money management in one framework.', 'https://www.amazon.com/s?k=trading+for+a+living+elder'],
+      ['Atomic Habits', 'James Clear', 'Build the daily discipline your journal and routine depend on.', 'https://www.amazon.com/s?k=atomic+habits+james+clear'],
+    ],
+    news: [
+      ['ForexFactory Calendar', 'The economic events that move MNQ. Check it before every session.', 'https://www.forexfactory.com/calendar'],
+      ['Financial Juice', 'Free live newswire — headlines the second they drop.', 'https://www.financialjuice.com/home'],
+      ['Investing.com Calendar', 'Economic calendar with impact filters and forecasts.', 'https://www.investing.com/economic-calendar/'],
+      ['TradingView News', 'Market news and ideas right on your charts.', 'https://www.tradingview.com/news/'],
+      ['@DeItaone (Walter Bloomberg)', 'Breaking macro headlines, fast, on X.', 'https://x.com/DeItaone'],
+    ],
+    channels: [
+      ['SMB Capital', 'Real institutional prop-desk education.', 'https://www.youtube.com/@smbcapital'],
+      ['Humbled Trader', 'Day trading with no hype and real numbers.', 'https://www.youtube.com/@HumbledTrader'],
+      ['Inner Circle Trader (ICT)', 'The source for liquidity, killzones and SMC.', 'https://www.youtube.com/@InnerCircleTrader'],
+      ['Rayner Teo', 'Clear, no-nonsense technicals and psychology.', 'https://www.youtube.com/@TradingwithRayner'],
+    ],
+    tools: [
+      ['TradingView', 'Charts, alerts and paper trading.', 'https://www.tradingview.com/'],
+      ['Apex Trader Funding', 'Prop-firm evaluation accounts.', 'https://apextraderfunding.com/'],
+      ['Tradeify', 'Prop-firm accounts and payouts.', 'https://tradeify.co/'],
+    ],
+  };
+
   // ---- plan (from the NorthPoint · Zero to Hero PDF) ----
   const PLAN = {
     pledge: 'I commit to respecting the structure of this plan above any emotional impulse. Profitability is not luck: it is the result of following my risk rules and my schedule without exception. I show up to every session, I follow the plan, and I trade until I cash the payout. My discipline is my financial freedom.',
@@ -325,6 +355,6 @@ const Data = (() => {
   return {
     FIRMS, firmOf, PHASES, phaseOf, ACC_STATUS, statusOf,
     INSTRUMENTS, SETUPS, setupOf, RESULTS, EMOTIONS,
-    COURSE, allLessons, lessonById, LESSON_VIDEOS, PLAN, HOME, MONEY, PORTFOLIO, seed,
+    COURSE, allLessons, lessonById, LESSON_VIDEOS, RESOURCES, PLAN, HOME, MONEY, PORTFOLIO, seed,
   };
 })();
