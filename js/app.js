@@ -10,6 +10,7 @@ const App = (() => {
 
   const NAV = [
     { r: 'inicio', ic: 'home', label: 'Home' },
+    { r: 'guardian', ic: 'shield', label: 'One Bullet' },
     { r: 'rutina', ic: 'flag', label: 'Rutina' },
     { r: 'academia', ic: 'academy', label: 'Academy', alias: ['lesson'] },
     { group: 'JOURNAL' },
@@ -19,7 +20,7 @@ const App = (() => {
     { r: 'calendario', ic: 'cal', label: 'Calendar' },
     { r: 'cuentas', ic: 'building', label: 'Accounts' },
   ];
-  const TITLES = { inicio: 'Home', rutina: 'Rutina · Co-piloto de sesión', academia: 'Academy', lesson: 'Academy', dashboard: 'Journal · Dashboard', trades: 'Trades', coach: 'Coach · Your trading analysis', calendario: 'Calendar', cuentas: 'Accounts', snowball: 'Snowball · Money Management', cartera: 'Wallet', plan: 'Plan & Discipline' };
+  const TITLES = { inicio: 'Home', guardian: 'ONE BULLET · Session guardian', rutina: 'Rutina · Co-piloto de sesión', academia: 'Academy', lesson: 'Academy', dashboard: 'Journal · Dashboard', trades: 'Trades', coach: 'Coach · Your trading analysis', calendario: 'Calendar', cuentas: 'Accounts', snowball: 'Snowball · Money Management', cartera: 'Wallet', plan: 'Plan & Discipline' };
 
   function sidebar() {
     const name = db.meta.name || 'Trader';
@@ -75,6 +76,7 @@ const App = (() => {
       </div>`;
     if (typeof Media !== 'undefined') Media.hydrate(root);
     if (route === 'rutina' && window.RutinaCtrl) window.RutinaCtrl.hydrate();
+    if (route === 'guardian' && window.GuardianCtrl) window.GuardianCtrl.hydrate();
   }
 
   // ---- field readers ----
@@ -259,6 +261,19 @@ const App = (() => {
       window.RutinaCtrl?.obsConnect(h, p, pw);
     },
     rutinaCopyClips:     () => window.RutinaCtrl?.copyClipTimestamps(),
+
+    /* ---- ONE BULLET · session guardian ---- */
+    guardianVoice:  () => window.GuardianCtrl?.voice(),
+    guardianPledge: () => window.GuardianCtrl?.pledge(),
+    guardianArm:    () => window.GuardianCtrl?.arm(),
+    guardianFire:   () => window.GuardianCtrl?.fire(),
+    guardianWin:    () => window.GuardianCtrl?.win(),
+    guardianLose:   () => window.GuardianCtrl?.lose(),
+    guardianMute:   () => window.GuardianCtrl?.mute(),
+    guardianSeal:   () => window.GuardianCtrl?.seal(),
+    guardianReset:  () => window.GuardianCtrl?.reset(),
+    guardianToStudio: () => go('rutina'),
+    guardianSetPnl: el => window.GuardianCtrl?.setPnl(el.value),
 
     go: el => go(el.dataset.route),
     seeLanding: () => go('landing'),

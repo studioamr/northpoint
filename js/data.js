@@ -131,6 +131,9 @@ const Data = (() => {
 
   // ---- Recursos recomendados (libros, noticias, canales, herramientas) ----
   const RESOURCES = {
+    community: [
+      ['NorthPoint Discord', 'Your private community: daily bias, live Q&A and accountability.', 'https://discord.gg/'],
+    ],
     books: [
       ['Trading in the Zone', 'Mark Douglas', 'The bible of trading psychology: think in probabilities, act without fear.', 'https://www.amazon.com/s?k=trading+in+the+zone+mark+douglas'],
       ['The Daily Trading Coach', 'Brett Steenbarger', '101 lessons to become your own coach and fix your patterns.', 'https://www.amazon.com/s?k=daily+trading+coach+steenbarger'],

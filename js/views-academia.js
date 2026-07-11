@@ -59,6 +59,10 @@ window.Views = window.Views || {};
     return `<div class="card res-card">
       <div class="ch-t mb4">${UI.icon('gift', '', 17)} Recommended resources</div>
       <p class="muted small mb12">Books, live news and channels to go beyond the course. Curated — not affiliated.</p>
+      ${(R.community || []).map(c => `<a class="res-item feature" href="${c[2]}" target="_blank" rel="noopener">
+        <span class="res-tt">${UI.icon('wapp', '', 15)} ${UI.esc(c[0])}</span>
+        <span class="res-sub muted small">${UI.esc(c[1])}</span>
+        <span class="res-go">${UI.icon('share', '', 15)}</span></a>`).join('')}
       <div class="res-grid">
         ${sec('book', 'Books', R.books.map(b => link(b[0], b[2], b[3], b[1])).join(''))}
         ${sec('bolt', 'News &amp; data', R.news.map(n => link(n[0], n[1], n[2])).join(''))}
